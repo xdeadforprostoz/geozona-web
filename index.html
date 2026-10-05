@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <base href="/geozona-web/">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="GEOzona — GPS-мониторинг транспорта, контроль топлива, маршрутов и автопарка.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#06131F">
+  <meta property="og:title" content="GEOzona — GPS-мониторинг транспорта">
+  <meta property="og:description" content="Контроль транспорта, топлива и маршрутов в единой системе.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>GEOzona — GPS-мониторинг транспорта</title>
+  <style>
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #06131F;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+    .loading {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(57,168,218,.15), transparent 32%),
+        #06131F;
+      color: #F4F9FC;
+      transition: opacity .35s ease;
+    }
+    .loader-mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 2px solid rgba(57,168,218,.18);
+      border-top-color: #39A8DA;
+      animation: spin 1s linear infinite;
+      box-shadow: 0 0 34px rgba(57,168,218,.10);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="loading" id="loading"><div class="loader-mark"></div></div>
+  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      const loader = document.getElementById('loading');
+      if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.remove(), 380);
+      }
+    });
+  </script>
+</body>
+</html>
